@@ -22,8 +22,9 @@ print(sex1)
 
 sex2 = sex1.value_counts()
 print(sex2)
-
-#aaa
+print('-'*30)
 
 #pd.pivot_table에서 열이름을 못찾겠음
 
+result2 = result.groupby(['카테고리','고객 성별']).count()
+print(result2)
