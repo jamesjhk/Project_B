@@ -31,12 +31,17 @@ print(total_acount)
 print('-5'*100)
 print('\n')
 
+#6.고객생년월일별 남녀별 거래금액
+df1=df.pivot_table(values='거래금액', index='고객 생년월일', columns='고객 성별', aggfunc=sum)
+print(df1)
+print('-6'*100)
+print('\n')
 
-#6.고객생년월일별 남녀거래금액평균
+#6_1.고객생년월일별 남녀거래금액평균
 grouped=df.groupby(['고객 생년월일', '고객 성별'])
 gdf=grouped.mean()
 print(gdf)
-print('-6'*100)
+print('-6_1'*100)
 print('\n')
 
 #생년을 나이로 바꾸어 열추가하기
@@ -59,10 +64,10 @@ print('-9'*100)
 print('\n')
 
 # 분석에 사용할 열 선택('고객 생년월일', '고객 성별', '나이', '연령대')
-ndf = df[['고객 생년월일', '고객 성별', '나이', '연령대','거래금액']]
-print(ndf.head())
-print('@'*100)
-print('\n')
+#ndf = df[['고객 생년월일', '고객 성별', '나이', '연령대','거래금액']]
+#print(ndf.head())
+#print('@'*100)
+#print('\n')
 
 
 #그래프그릴때 한글폰트지원
@@ -75,8 +80,20 @@ plt.rc('font', family=font_name)
 plt.style.use('ggplot')
 
 #그래프 출력 그래프 figure생성(항상 먼저 종이를 만들어야한다)
-ndf.plot(kind='scatter', x='고객 생년월일', y='거래금액', c='red',s=10,figsize=(10,5))
+#ndf.plot(kind='scatter', x='고객 생년월일', y='거래금액', c='O',s=10, figsize=(20,5))
+#plt.show()
+#plt.close()
+#print('-10'*100)
+#print('\n')
+
+df.plot( kind='scatter',x='고객 생년월일', y='거래금액',c='coral', s=10, figsize=(10,5))
 plt.show()
 plt.close()
-print('-10'*100)
+print('*'*100)
+print('\n')
+
+df.plot(kind='hist', x='나이', y='거래금액', figsize=(20,10), width=0.7)
+plt.show()
+plt.close()
+print('*'*100)
 print('\n')
